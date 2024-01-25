@@ -1,0 +1,36 @@
+.card {
+  color:#EEEEEE;
+  font-size: 20px;
+  margin: 0.3rem;
+  padding: 0.3rem;
+  font-weight: bold;
+  /* background-color: #0066FF; */
+}
+.info {
+  display: flex;
+  justify-content: space-between;
+}
+.type {
+  font-weight: bold;
+  height: auto;
+  width: auto;
+  background-color: green;
+  margin: 0.3rem;
+  padding: 0.3rem;
+  color: White;
+  border-radius: 5px;
+}
+
+.delete-button,
+.edit-button {
+  height: 30px;
+  width: 70px;
+  text-align: center;
+}
+.content {
+  background-color: rgb(226, 232, 234);
+  padding: 10px;
+  margin-bottom: 20px;
+  background-color: weight;
+}
+
