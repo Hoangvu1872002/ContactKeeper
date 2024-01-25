@@ -157,6 +157,7 @@ const HomePage = () => {
               toast.success("More success information!", {
                 position: toast.POSITION.TOP_RIGHT,
               });
+              setContactForm(initialValues);
               setShow((pre) => !pre);
             })
             .catch((err) =>
