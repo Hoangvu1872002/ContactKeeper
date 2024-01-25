@@ -66,7 +66,7 @@ const createContact = asyncHandler(async (req, res) => {
       });
       // console.log(newContact);
       // const userInsert = await userModel.create(newUser);
-      const ContactInsert = await contactModel.insertmany(newContact);
+      const ContactInsert = await contactModel.create(newContact);
       if (ContactInsert) res.status(200).json(newContact);
     } catch (error) {
       res.status(401);
