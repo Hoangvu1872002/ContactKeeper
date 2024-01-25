@@ -1,7 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const contactModel = require("../model/contactModel");
 
-
 const getContact = asyncHandler(async (req, res) => {
   try {
     const pageSize = 6;
@@ -67,7 +66,7 @@ const createContact = asyncHandler(async (req, res) => {
       console.log(newContact);
       // console.log(newContact);
       // const userInsert = await userModel.create(newUser);
-      const ContactInsert = await contactModel.insertMany(newContact);
+      const ContactInsert = await contactModel.create(newContact);
       if (ContactInsert) res.status(200).json(newContact);
     } catch (error) {
       res.status(401);
@@ -115,7 +114,8 @@ const updateContact = asyncHandler(async (req, res) => {
       phoneNumber: req.body.phoneNumber,
     });
 
-    if (!req.password) {
+
+    if (!req.body.password) {
       if (!!nameUpdate && contactUpdate.driverName !== nameUpdate.driverName) {
         res.status(401);
         throw new Error("name da ton tai!");
@@ -176,7 +176,7 @@ const updateContact = asyncHandler(async (req, res) => {
             (contactUpdate.phoneNumber = req.body.phoneNumber),
             (contactUpdate.vehicleBrand = req.body.vehicleBrand),
             (contactUpdate.travelMode = req.body.travelMode),
-            // (contactUpdate.password = req.body.password),
+            (contactUpdate.password = req.body.password),
             await contactUpdate.save();
           const contact = await contactModel.findById({ _id: req.params.id });
           res.json(contact);

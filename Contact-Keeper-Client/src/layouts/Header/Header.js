@@ -31,11 +31,11 @@ const Header = (props) => {
                   Profile
                 </Link>
               </span>
-              <span className="nav-item">
+              {/* <span className="nav-item">
                 <Link className="nav-link" to="/home">
                   About
                 </Link>
-              </span>
+              </span> */}
             </div>
             { 
               state.user && state.user.name ? (

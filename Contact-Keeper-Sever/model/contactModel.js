@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const schema = mongoose.Schema;
 const admin = require("../model/userModel");
+const bcrypt = require('bcryptjs')
 
 const contactSchema = new schema(
   {
@@ -9,7 +10,7 @@ const contactSchema = new schema(
       ref: admin,
       required: true,
     },
-    
+
     driverName: {
       type: String,
       default: "Test name",
@@ -20,8 +21,8 @@ const contactSchema = new schema(
       unique: true,
     },
     password: {
-      type: String,
       required: true,
+      type: String,
     },
     travelMode: {
       type: String,
@@ -80,19 +81,20 @@ const contactSchema = new schema(
   }
 );
 
-contactSchema.pre('save', async function (next){
-    
-  if(!this.isModified('password')){
-      return next();
+contactSchema.pre("save", async function (next) {
+  if (!this.isModified("password")) {
+    return next();
   }
-      try {
-          const salt = await bcrypt.genSalt(10);
-          this.password = await bcrypt.hash(this.password, salt);
-          next();   
-      } catch (error) {
-          return next(error);
-      } 
-})
-
+  try {
+    console.log("a");
+    const salt = await bcrypt.genSaltSync(10);
+    console.log("b");
+    this.password = await bcrypt.hash(this.password, salt);
+    console.log("c");
+    next();
+  } catch (error) {
+    return next(error);
+  }
+});
 
 module.exports = mongoose.model("Driver", contactSchema);
