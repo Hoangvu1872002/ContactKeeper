@@ -99,11 +99,26 @@ const HomePage = () => {
         contact.vehicleBrand &&
         contact.travelMode
       ) {
-        if (
+        if (!contact.passwordAgain && !contact.password) {
+          await ContactService.update(index._id, contact)
+            .then((res) => {
+              toast.success("Update successful!", {
+                position: toast.POSITION.TOP_RIGHT,
+              });
+              setShowForm((pre) => !pre);
+            })
+            .catch((err) => {
+              setContactForm({ ...infCard, password: "" });
+              toast.error(err.response.data.message, {
+                position: toast.POSITION.TOP_RIGHT,
+              });
+            });
+        } else if (
           (!contact.password && contact.passwordAgain) ||
           (!contact.passwordAgain && contact.password) ||
-          (contact.passwordAgain !== contact.password)
+          contact.passwordAgain !== contact.password
         ) {
+          // setContactForm({ ...infCard, password: "" });
           return;
         } else {
           await ContactService.update(index._id, contact)
@@ -114,7 +129,7 @@ const HomePage = () => {
               setShow((pre) => !pre);
             })
             .catch((err) => {
-              setContactForm(infCard);
+              setContactForm({ ...infCard, password: "" });
               toast.error(err.response.data.message, {
                 position: toast.POSITION.TOP_RIGHT,
               });

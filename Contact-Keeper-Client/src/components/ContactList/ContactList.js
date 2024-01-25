@@ -23,10 +23,10 @@ const ContactList = ({ setShow, setQuery, query, numberPage, setShowForm }) => {
     ctxContact.setContactForm(initialValues);
   };
   return (
-    <div clasName="">
+    <div className="">
       <h1 className="flex justify-center font-bold text-lg">Contact List</h1>
       <div className="grid justify-items-center mt-3">
-        <div clasName="">
+        <div className="">
           <span>Filter Contact:</span>
           <span>
             <input

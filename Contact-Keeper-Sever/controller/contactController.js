@@ -64,9 +64,10 @@ const createContact = asyncHandler(async (req, res) => {
         vehicleBrand: req.body.vehicleBrand,
         travelMode: req.body.travelMode,
       });
+      console.log(newContact);
       // console.log(newContact);
       // const userInsert = await userModel.create(newUser);
-      const ContactInsert = await contactModel.create(newContact);
+      const ContactInsert = await contactModel.insertMany(newContact);
       if (ContactInsert) res.status(200).json(newContact);
     } catch (error) {
       res.status(401);
@@ -175,7 +176,7 @@ const updateContact = asyncHandler(async (req, res) => {
             (contactUpdate.phoneNumber = req.body.phoneNumber),
             (contactUpdate.vehicleBrand = req.body.vehicleBrand),
             (contactUpdate.travelMode = req.body.travelMode),
-            (contactUpdate.password = req.body.password),
+            // (contactUpdate.password = req.body.password),
             await contactUpdate.save();
           const contact = await contactModel.findById({ _id: req.params.id });
           res.json(contact);

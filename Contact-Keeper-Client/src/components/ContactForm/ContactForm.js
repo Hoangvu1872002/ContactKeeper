@@ -18,7 +18,7 @@ const ContactForm = (props) => {
   const onSubmitHandler = (event) => {
     event.preventDefault();
     onAddContact(ctxContact.validate(contactForm));
-    setContactForm(initialValues);
+    // setContactForm(initialValues);
     // setTimeout(()=> {
     //   props.setShowForm((pre) => !pre);
     // }, 1000)
