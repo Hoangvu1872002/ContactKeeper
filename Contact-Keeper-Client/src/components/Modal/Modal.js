@@ -16,9 +16,9 @@ const Modal = (props) => {
         <div className="modall">
           <div className="overlay"></div>
           <div className="modal-content">
-          <div className="flex justify-center font-bold text-lg">
-            <p>Information Contact</p>
-          </div>
+            <div className="flex justify-center font-bold text-lg">
+              <p>Information Contact</p>
+            </div>
             <div className="inf flex justify-around  mt-4 mb-3">
               <div className="lable">
                 <p>License plate: </p> <br></br>
@@ -27,11 +27,11 @@ const Modal = (props) => {
                 <p>Total rating: </p> <br></br>
                 <p>Vehicle brand: </p> <br></br>
                 <p>Travel mode: </p> <br></br>
-                <p>Role: </p> <br></br>           
+                <p>Role: </p> <br></br>
                 <p>Added by admin: </p> <br></br>
                 <p>Id: </p>
               </div>
-              
+
               <div className="contentModel">
                 <p> {infCard.licensePlate}</p> <br></br>
                 <p> {infCard.driverName}</p> <br></br>
@@ -46,16 +46,19 @@ const Modal = (props) => {
             </div>
             <div className="close-modal flex">
               <button
-              className="bg-emerald-500 hover:bg-emerald-700 w-9 h-9 rounded-full border-1 border-solid border-stone-300 text-gray-50"
+                className="bg-emerald-500 hover:bg-emerald-700 w-9 h-9 rounded-full border-1 border-solid border-stone-300 text-gray-50"
                 onClick={() => {
-                  ctxContact.setContactForm({...infCard,  password: ""});
+                  ctxContact.setContactForm({ ...infCard, password: "" });
                   handleShowContactForm();
                   ctxContact.toggleModal();
                 }}
               >
                 Edit
               </button>
-              <button className=" bg-red-500 hover:bg-red-700 w-9 h-9 ml-1 rounded-full border-1 border-solid border-gray-950 text-gray-50" onClick={ctxContact.toggleModal}>
+              <button
+                className=" bg-red-500 hover:bg-red-700 w-9 h-9 ml-1 rounded-full border-1 border-solid border-gray-950 text-gray-50"
+                onClick={ctxContact.toggleModal}
+              >
                 X
               </button>
             </div>
